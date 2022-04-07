@@ -1,0 +1,50 @@
+version: '3.1'
+services:
+    # DATABASES
+    db-api:
+        container_name: db-api
+        image: postgres:12-alpine
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: user
+        volumes:
+            - ./bancos/postgres/data-dev:/var/lib/postgresql/data
+
+    # BARRAMENTO DE MENSAGERIA
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:3.7.5-management-alpine
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            RABBITMQ_DEFAULT_USER: rabbit
+            RABBITMQ_DEFAULT_PASS: rabbit
+
+    # SERVIÇOS
+    api-a:
+        container_name: api-a
+        image: openjdk:8-alpine
+        ports:
+            - "8080:8080"
+        command: java -Duser.timezone=GMT-03:00 -Xmx512m -Xmx256m -jar /xpto/api-a.jar
+        volumes:
+            - ./api-a/target/hub-0.0.1-SNAPSHOT.jar:/xpto/api-a.jar
+        links:
+            - db-api
+            - rabbitmq
+    
+    api-b:
+        container_name: api-b
+        image: openjdk:8-alpine
+        ports:
+            - "8081:8080"
+        command: java -Duser.timezone=GMT-03:00 -Xmx512m -Xmx256m -jar /xpto/api-b.jar
+        volumes:
+            - ./api-b/target/hub-0.0.1-SNAPSHOT.jar:/xpto/api-b.jar
+        links:
+            - db-api
+            - rabbitmq
