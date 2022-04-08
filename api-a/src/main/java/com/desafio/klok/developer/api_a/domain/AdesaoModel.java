@@ -1,5 +1,6 @@
 package com.desafio.klok.developer.api_a.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,7 +28,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_adesao")
-public class AdesaoModel{
+public class AdesaoModel implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

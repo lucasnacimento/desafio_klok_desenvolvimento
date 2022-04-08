@@ -1,5 +1,6 @@
 package com.desafio.klok.developer.api_a.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_cobranca")
-public class CobrancaModel {
+public class CobrancaModel implements Serializable{
+
+    private static final long serialVersionUID = 1L; 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +36,6 @@ public class CobrancaModel {
 
     @JoinColumn(name = "id_pagamento")
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Pagamento pagamento;
+    private PagamentoModel pagamento;
 
 }

@@ -1,5 +1,7 @@
 package com.desafio.klok.developer.api_a.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +23,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_resposta")
-public class RespostaModel {
+public class RespostaModel implements Serializable {
+
+    private static final long serialVersionUID = 1L; 
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

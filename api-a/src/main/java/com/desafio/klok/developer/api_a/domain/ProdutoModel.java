@@ -1,5 +1,6 @@
 package com.desafio.klok.developer.api_a.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -25,7 +26,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_produto")
-public class ProdutoModel {
+public class ProdutoModel implements Serializable {
+
+    private static final long serialVersionUID = 1L; 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

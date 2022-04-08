@@ -1,5 +1,7 @@
 package com.desafio.klok.developer.api_a.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_campo")
-public class CampoModel {
+public class CampoModel implements Serializable {
+
+    private static final long serialVersionUID = 1L; 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
