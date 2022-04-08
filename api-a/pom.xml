@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.desafio.klok.developer</groupId>
-	<artifactId>api_a</artifactId>
+	<artifactId>api-a</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>api_a</name>
+	<name>api-a</name>
 	<description>Gerenciador de Adesões</description>
 	<properties>
 		<java.version>1.8</java.version>

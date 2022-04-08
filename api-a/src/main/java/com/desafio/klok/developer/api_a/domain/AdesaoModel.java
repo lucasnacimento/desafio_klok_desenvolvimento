@@ -27,7 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_adesao")
-public class AdesaoModel {
+public class AdesaoModel{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
