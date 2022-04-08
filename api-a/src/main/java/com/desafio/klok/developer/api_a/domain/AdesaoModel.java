@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,16 +38,20 @@ public class AdesaoModel implements Serializable{
 
     private String nome;
 
+    @Column(name = "data_adesao")
     private LocalDateTime dataAdesao;
-
+    
     private BigDecimal valor;
-
+    
     private StatusAdesao status;
-
+    
+    @Column(name = "produto_model")
     private ProdutoModel produtoModel;
-
+    
+    @Column(name = "qtd_parcelas")
     private int qtdParcelas;
-
+    
+    @Column(name = "dia_cobranca")
     private int diaCobranca;
 
     @JoinColumn(name = "id_resposta")

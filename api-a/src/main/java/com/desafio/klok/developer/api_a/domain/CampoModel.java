@@ -2,6 +2,7 @@ package com.desafio.klok.developer.api_a.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,7 @@ public class CampoModel implements Serializable {
 
     private String nome;
 
+    @Column(name = "obrigatorio")
     private boolean isObrigatorio;
     
 }
