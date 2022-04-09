@@ -1,5 +1,6 @@
-package com.desafio.klok.developer.api_a.presentation;
+package com.desafio.klok.developer.api_a.presentation.dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -11,11 +12,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CobrancaDTO {
-
-    private LocalDateTime dataCobranca;
-
-    private PagamentoDTO pagamento;
+public class PagamentoDTO implements Serializable{
+    
+    private LocalDateTime dataPagamento;
 
 }
 

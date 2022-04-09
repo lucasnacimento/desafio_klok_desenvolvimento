@@ -1,4 +1,4 @@
-package com.desafio.klok.developer.api_a.presentation;
+package com.desafio.klok.developer.api_a.presentation.dto;
 
 import java.math.BigDecimal;
 import java.util.List;

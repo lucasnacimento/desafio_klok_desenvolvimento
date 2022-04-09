@@ -36,7 +36,7 @@ public class CobrancaModel implements Serializable{
     @Column(name = "data_cobranca")
     private LocalDateTime dataCobranca;
 
-    @JoinColumn(name = "id_pagamento")
+    @JoinColumn(name = "id_cobranca")
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private PagamentoModel pagamento;
 

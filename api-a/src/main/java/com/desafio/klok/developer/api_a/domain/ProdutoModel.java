@@ -6,12 +6,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -40,8 +40,10 @@ public class ProdutoModel implements Serializable {
 
     private BigDecimal preco;
 
-    @JoinColumn(name = "id_campo")
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "t_produto_campo", 
+        joinColumns = @JoinColumn(name = "produto_id"),
+        inverseJoinColumns = @JoinColumn(name = "campo_id"))
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<CampoModel> listaCampos;
 
 }

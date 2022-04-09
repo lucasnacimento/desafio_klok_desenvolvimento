@@ -1,4 +1,4 @@
-package com.desafio.klok.developer.api_a.presentation;
+package com.desafio.klok.developer.api_a.presentation.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

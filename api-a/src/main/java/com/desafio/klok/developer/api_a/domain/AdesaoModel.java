@@ -36,8 +36,6 @@ public class AdesaoModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-
     @Column(name = "data_adesao")
     private LocalDateTime dataAdesao;
     
@@ -54,11 +52,18 @@ public class AdesaoModel implements Serializable{
     @Column(name = "dia_cobranca")
     private int diaCobranca;
 
-    @JoinColumn(name = "id_resposta")
+    @JoinColumn(name = "id_adesao")
     @OneToMany(cascade = CascadeType.ALL)
     private List<RespostaModel> listaRespostas;
     
     @JoinColumn(name = "id_cobranca")
     @OneToMany(cascade = CascadeType.ALL)
     private List<CobrancaModel> listaCobrancas;
+
+    public String getRespostaValorByCampo(String nomeCampo) {
+        return listaRespostas.stream().filter(resposta -> 
+            resposta.getCampo().getNome().equals(nomeCampo)     
+        ).findFirst().map(res -> res.getValor()).orElse(null);
+    }
+    
 }

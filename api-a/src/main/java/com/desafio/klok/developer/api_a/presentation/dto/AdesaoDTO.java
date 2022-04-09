@@ -1,4 +1,4 @@
-package com.desafio.klok.developer.api_a.presentation;
+package com.desafio.klok.developer.api_a.presentation.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,8 +16,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdesaoDTO {
-
-    private String nome;
 
     private LocalDateTime dataAdesao;
     
