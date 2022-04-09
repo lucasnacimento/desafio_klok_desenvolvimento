@@ -68,12 +68,42 @@ public class AdesaoModel implements Serializable{
         ).findFirst().map(res -> res.getValor()).orElse(null);
     }
 
+    public RespostaModel getRespostaByCampo(String nomeCampo) {
+        return listaRespostas.stream().filter(resposta -> 
+            resposta.getCampo().getNome().equals(nomeCampo)     
+        ).findFirst().map(res -> res).orElse(null);
+    }
+
     public void cadastrar(){
         this.dataAdesao = LocalDateTime.now();
         this.status = StatusAdesao.ATIVA;
         this.valor = this.getProdutoModel().getPreco();
         this.qtdParcelas = new Integer(this.getRespostaValorByCampo("adesao.qtdParcelas"));
         this.diaCobranca = new Integer(this.getRespostaValorByCampo("adesao.diaCobranca"));
+    }
+
+    public void validarRespostas(){
+        List<CampoModel> campos = this.getProdutoModel().getListaCampos();
+        List<RespostaModel> respostas = this.getListaRespostas();
+        for (CampoModel campo : campos) {
+            if (campo.isObrigatorio()) {
+                int count = 0;
+                for(RespostaModel resposta : respostas) {
+                    if(resposta.getCampo().getNome().equals(campo.getNome())) {
+                        count++;
+                    }
+                }
+                if(count == 0) {
+                    throw new IllegalArgumentException("campo ".concat(campo.getNome()).concat(" é obrigatório!"));
+                }
+            }
+        }
+    }   
+    
+    public void validarProduto(){
+        if(produtoModel == null){
+            throw new IllegalArgumentException("Adesão não possuí produto!");
+        }
     }
     
 }

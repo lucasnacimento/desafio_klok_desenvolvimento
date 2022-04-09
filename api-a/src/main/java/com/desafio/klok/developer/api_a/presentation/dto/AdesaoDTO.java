@@ -23,6 +23,8 @@ public class AdesaoDTO {
     
     private StatusAdesao status;
     
+    private Long idProdutoModel;
+
     private ProdutoDTO produtoModel;
     
     private int qtdParcelas;

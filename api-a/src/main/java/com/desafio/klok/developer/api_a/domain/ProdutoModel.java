@@ -46,4 +46,10 @@ public class ProdutoModel implements Serializable {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<CampoModel> listaCampos;
 
+    public CampoModel buscaCampoNome(String nome){
+        return listaCampos.stream().filter(campo -> 
+        campo.getNome().equals(nome)     
+        ).findFirst().map(p -> p).orElse(null);
+    }
+
 }
