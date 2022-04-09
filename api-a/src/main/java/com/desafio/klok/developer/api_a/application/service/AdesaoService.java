@@ -1,12 +1,9 @@
 package com.desafio.klok.developer.api_a.application.service;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import com.desafio.klok.developer.api_a.domain.AdesaoModel;
-import com.desafio.klok.developer.api_a.domain.enums.StatusAdesao;
 import com.desafio.klok.developer.api_a.infrastructure.exceptions.NaoEncontradoException;
 import com.desafio.klok.developer.api_a.infrastructure.repository.AdesaoRepository;
 
@@ -37,11 +34,7 @@ public class AdesaoService {
 
     public AdesaoModel cadastrar(AdesaoModel adesaoModel) {
         try {
-            adesaoModel.setDataAdesao(LocalDateTime.now());
-            adesaoModel.setStatus(StatusAdesao.ATIVA);
-            adesaoModel.setValor(new BigDecimal(adesaoModel.getRespostaValorByCampo("adesao.valor")));
-            adesaoModel.setQtdParcelas(new Integer(adesaoModel.getRespostaValorByCampo("adesao.qtdParcelas")));
-            adesaoModel.setDiaCobranca(new Integer(adesaoModel.getRespostaValorByCampo("adesao.diaCobranca")));
+            adesaoModel.cadastrar();
             adesaoModel = adesaoRepository.save(adesaoModel);
         } catch (IllegalArgumentException err) {
             throw new IllegalArgumentException("Falha ao cadastrar essa Adesão!");

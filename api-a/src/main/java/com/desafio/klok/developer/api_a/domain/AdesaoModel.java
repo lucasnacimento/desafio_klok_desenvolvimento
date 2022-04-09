@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -43,7 +44,8 @@ public class AdesaoModel implements Serializable{
     
     private StatusAdesao status;
     
-    @Column(name = "produto_model")
+    @JoinColumn(name = "id_produto")
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private ProdutoModel produtoModel;
     
     @Column(name = "qtd_parcelas")
@@ -56,7 +58,7 @@ public class AdesaoModel implements Serializable{
     @OneToMany(cascade = CascadeType.ALL)
     private List<RespostaModel> listaRespostas;
     
-    @JoinColumn(name = "id_cobranca")
+    @JoinColumn(name = "id_adesao")
     @OneToMany(cascade = CascadeType.ALL)
     private List<CobrancaModel> listaCobrancas;
 
@@ -64,6 +66,14 @@ public class AdesaoModel implements Serializable{
         return listaRespostas.stream().filter(resposta -> 
             resposta.getCampo().getNome().equals(nomeCampo)     
         ).findFirst().map(res -> res.getValor()).orElse(null);
+    }
+
+    public void cadastrar(){
+        this.dataAdesao = LocalDateTime.now();
+        this.status = StatusAdesao.ATIVA;
+        this.valor = this.getProdutoModel().getPreco();
+        this.qtdParcelas = new Integer(this.getRespostaValorByCampo("adesao.qtdParcelas"));
+        this.diaCobranca = new Integer(this.getRespostaValorByCampo("adesao.diaCobranca"));
     }
     
 }

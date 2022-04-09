@@ -41,8 +41,8 @@ public class ProdutoModel implements Serializable {
     private BigDecimal preco;
 
     @JoinTable(name = "t_produto_campo", 
-        joinColumns = @JoinColumn(name = "produto_id"),
-        inverseJoinColumns = @JoinColumn(name = "campo_id"))
+        joinColumns = @JoinColumn(name = "id_produto"),
+        inverseJoinColumns = @JoinColumn(name = "id_campo"))
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<CampoModel> listaCampos;
 
