@@ -1,3 +1,4 @@
 bancos/
 .vscode/
 .idea/
+/frontend/node_modules
