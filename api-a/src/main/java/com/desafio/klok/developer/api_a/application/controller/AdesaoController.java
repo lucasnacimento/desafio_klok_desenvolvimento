@@ -28,12 +28,19 @@ public class AdesaoController {
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody AdesaoDTO adesaoDTO) {
         AdesaoModel adesaoModel = modelMapper.map(adesaoDTO, AdesaoModel.class);
+        HttpStatus httpCode = HttpStatus.CREATED;
         try {
             adesaoModel = adesaoService.cadastrar(adesaoModel, adesaoDTO.getIdProdutoModel());
             AdesaoDTO dto = modelMapper.map(adesaoModel, AdesaoDTO.class);
-            return ResponseEntity.status(HttpStatus.CREATED).body(dto);
-        } catch (IllegalArgumentException | NaoEncontradoException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MensagemErroDTO(e.getMessage(), HttpStatus.BAD_REQUEST.value()));
+            return ResponseEntity.status(httpCode).body(dto);
+        
+        } catch (IllegalArgumentException e) {
+            httpCode = HttpStatus.BAD_REQUEST;
+            return ResponseEntity.status(httpCode).body(new MensagemErroDTO(e.getMessage(), httpCode.value()));
+        
+        } catch (NaoEncontradoException e) {
+            httpCode = HttpStatus.NOT_FOUND;
+            return ResponseEntity.status(httpCode).body(new MensagemErroDTO(e.getMessage(), httpCode.value()));
         }
     }
 
