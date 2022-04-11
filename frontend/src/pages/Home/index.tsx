@@ -1,31 +1,32 @@
-import PainelFormulario  from '../../components/PainelFormulario/index';
-
-import { useEffect, useState } from "react";
-import { Produto } from "../../types/produto";
 import axios from "axios";
-import { URL_PRODUTO }  from "../../config/request";
-import { URL_BASE }  from "../../config/request";
+import React, { useEffect, useState } from "react";
+import PainelFormulario from '../../components/PainelFormulario/index';
+import { URL_BASE, URL_PRODUTO } from "../../config/request";
+import { Produto } from "../../types/produto";
+
 
 function Home() {
 
-    const [produto, setProduto] = useState<Produto>({
-        id: 1,
-        nome: ""
-    });
+    const [listaProdutos, setListaProdutos] = useState<Produto[]>([]);
 
-    useEffect(() => {
+    useEffect(() =>{
         axios.get(`${URL_BASE}${URL_PRODUTO}`)
-             .then((response) => {
-                 const data = response.data as Produto;
-                 console.log(data);
-                 setProduto(data);
-             });
-    }, [produto]);
+            .then((response) => {
+                const lista = response.data as Produto[];
+                setListaProdutos(lista)
+        });
+    }, []);
 
+        return (
+            <>
+                <div className="titulo-home">
+                    <h1>Adesões de produtos</h1>
+                </div>
+                
+                <PainelFormulario lista={listaProdutos}/>
+            </>
+        );
 
-    return (
-        <h1>Olá mundo</h1>
-    );
 }
 
 export default Home;
