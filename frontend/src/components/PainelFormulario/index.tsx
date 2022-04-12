@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Produto } from '../../types/produto';
+import { Produto, Adesao, Resposta, Campo } from '../../types/produto';
+import axios from "axios";
+import { URL_ADESAO, URL_BASE } from '../../config/request';
 
 type Props = {
     lista: Produto[];
@@ -21,7 +23,30 @@ function PainelFormulario( { lista } : Props) {
         listaCampos: []
     });
 
+    const [novaAdesao, setNovaAdesao] = useState<Adesao>({
+        idProdutoModel: 0,
+        listaRespostas: []    
+    });
+    
     const [selecionado, setSelecionado] = useState(0);
+
+    const [respostas, setRespostas] = useState<Resposta[]>([]);
+
+    function preencherCampos() {
+        produto.listaCampos.forEach((c) => {
+            let campo:Campo = {
+                nome: c.nome,
+            };
+            let resposta:Resposta = {
+                campo: campo,
+                valor: (document.getElementById(c.nome) as HTMLInputElement).value
+            };
+            respostas.push(resposta);
+        })
+        novaAdesao.idProdutoModel = selecionado;
+        novaAdesao.listaRespostas = respostas;
+    }
+
     
     useEffect(() => {
         let listaProdutos = lista.filter(p => p.id === selecionado);
@@ -38,19 +63,30 @@ function PainelFormulario( { lista } : Props) {
                 ))}
             </select>
 
-            <div className="campos">
-                {
-                    produto?.listaCampos.map(c => (
-                        <li>
-                            <label htmlFor="">{c.nome}</label>
-                            <input type="text" id={c.nome} />
-                        </li>
-                    ))
+            <form>
+                <div className="campos" id="campos">
+                    {
+                        produto?.listaCampos.map(c => (
+                            <li>
+                                <label htmlFor="nome">{c.nome}</label>
+                                <input type="text" id={c.nome}/>
+                            </li>
+                        ))
 
-                }
-            </div>
+                    }
+                </div>
+            </form>
 
-            <button type="submit">Salvar</button>
+            <button type="submit" onClick={(e) => {
+                preencherCampos();
+               axios.post(`${URL_BASE}${URL_ADESAO}`, novaAdesao)
+               .then(response => {
+                    console.log(response);
+                })
+                .catch(response => {
+                    console.log(response);
+                })
+            }}>Salvar</button>
         </div>
         </>
     )

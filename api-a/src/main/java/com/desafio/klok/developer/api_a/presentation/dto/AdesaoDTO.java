@@ -17,6 +17,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AdesaoDTO {
 
+    private Long id;
+
     private LocalDateTime dataAdesao;
     
     private BigDecimal valor;

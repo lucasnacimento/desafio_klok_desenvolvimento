@@ -24,7 +24,7 @@ CREATE TABLE t_adesao (
     id BIGSERIAL NOT NULL,
     data_adesao TIMESTAMP,
     dia_cobranca INT NOT NULL,
-    STATUS INTEGER NOT NULL,
+    status_adesao INTEGER NOT NULL,
     qtd_parcelas INT NOT NULL,
     valor NUMERIC NOT NULL,
     id_produto BIGINT NOT NULL,

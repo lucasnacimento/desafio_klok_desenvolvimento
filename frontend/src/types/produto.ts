@@ -9,7 +9,17 @@ export type Produto = {
 }
   
 export type Campo = {
-  id: number
+  id?: number
   nome: string
-  obrigatorio: boolean
+  obrigatorio?: boolean
+}
+
+export type Resposta = {
+  campo: Campo,
+  valor: string
+}
+
+export type Adesao = {
+  idProdutoModel: number,
+  listaRespostas: Resposta[]
 }

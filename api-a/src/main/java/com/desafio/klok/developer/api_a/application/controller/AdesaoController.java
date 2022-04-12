@@ -1,5 +1,7 @@
 package com.desafio.klok.developer.api_a.application.controller;
 
+import javax.validation.Valid;
+
 import com.desafio.klok.developer.api_a.application.service.AdesaoService;
 import com.desafio.klok.developer.api_a.domain.AdesaoModel;
 import com.desafio.klok.developer.api_a.presentation.dto.AdesaoDTO;
@@ -26,7 +28,7 @@ public class AdesaoController {
     private ModelMapper modelMapper;
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody AdesaoDTO adesaoDTO) {
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody AdesaoDTO adesaoDTO) {
         AdesaoModel adesaoModel = modelMapper.map(adesaoDTO, AdesaoModel.class);
         HttpStatus httpCode = HttpStatus.CREATED;
         try {

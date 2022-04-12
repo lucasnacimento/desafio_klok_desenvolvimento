@@ -15,10 +15,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.desafio.klok.developer.api_a.domain.enums.StatusAdesao;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +30,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table(name = "t_adesao")
 public class AdesaoModel implements Serializable{
@@ -37,23 +41,30 @@ public class AdesaoModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(name = "data_adesao")
     private LocalDateTime dataAdesao;
     
+    @NotNull
     private BigDecimal valor;
     
+    @NotNull
+    @Column(name = "status_adesao")
     private StatusAdesao status;
     
+    @NotNull
     @JoinColumn(name = "id_produto")
     @ManyToOne(cascade = CascadeType.PERSIST)
     private ProdutoModel produtoModel;
     
+    @NotNull
     @Column(name = "qtd_parcelas")
     private int qtdParcelas;
     
+    @NotNull
     @Column(name = "dia_cobranca")
     private int diaCobranca;
-
+    
     @JoinColumn(name = "id_adesao")
     @OneToMany(cascade = CascadeType.ALL)
     private List<RespostaModel> listaRespostas;
