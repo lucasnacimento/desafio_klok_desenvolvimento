@@ -2,7 +2,6 @@ package com.desafio.klok.developer.api_a.application.service;
 
 import com.desafio.klok.developer.api_a.infrastructure.configSecurity.auth.JwtUtils;
 import com.desafio.klok.developer.api_a.infrastructure.configSecurity.service.UserSecurityService;
-import com.desafio.klok.developer.api_a.presentation.dto.CredenciaisDTO;
 import com.desafio.klok.developer.api_a.presentation.dto.LoginDTO;
 import com.desafio.klok.developer.api_a.presentation.dto.MensagemDTO;
 

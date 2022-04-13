@@ -11,7 +11,8 @@ function Home() {
     const [listaProdutos, setListaProdutos] = useState<Produto[]>([]);
 
     useEffect(() =>{
-        axios.get(`${URL_BASE}${URL_PRODUTO}`)
+        axios.get(`${URL_BASE}${URL_PRODUTO}`, { 'headers': { 'Authorization': `Bearer ${window.localStorage.getItem("token")}` } }
+        )
             .then((response) => {
                 const lista = response.data as Produto[];
                 setListaProdutos(lista)

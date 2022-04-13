@@ -1,0 +1,71 @@
+.view-login {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.painel-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+}
+
+.painel-campos {
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.painel-campos li {
+    justify-content: center;
+    list-style: none;
+    margin-bottom:1rem;
+    width: 100%;
+
+}
+
+.view-login button {
+    padding: 0.5rem;
+    width: 6rem;
+    border-radius: 0.5rem;
+    background:rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+}
+
+.view-login button:hover {
+    background: #f95842;
+    color:black;
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.view-login button {
+    transform: scale(1);
+    transition: all 0.5s;
+}
+
+.view-login h1 {
+    text-align: center;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.view-login .painel-campos input {
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 0.4rem;
+    font-size: 1rem;
+}

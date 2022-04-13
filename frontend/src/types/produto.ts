@@ -23,3 +23,8 @@ export type Adesao = {
   idProdutoModel: number,
   listaRespostas: Resposta[]
 }
+
+export type Credencias = {
+  login: string,
+  password: string
+}
