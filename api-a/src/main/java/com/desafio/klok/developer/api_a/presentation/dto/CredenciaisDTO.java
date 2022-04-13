@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor
 @Getter
 @Setter
-public class MensagemErroDTO {
+@AllArgsConstructor
+public class CredenciaisDTO {
     
-    private String mensagem;
-    private int codigo;
+    private String login;
+
+    private String password;
 }

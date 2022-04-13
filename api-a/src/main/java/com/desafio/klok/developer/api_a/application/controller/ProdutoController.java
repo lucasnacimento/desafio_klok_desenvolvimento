@@ -3,7 +3,7 @@ package com.desafio.klok.developer.api_a.application.controller;
 import com.desafio.klok.developer.api_a.application.service.ProdutoService;
 import com.desafio.klok.developer.api_a.domain.ProdutoModel;
 import com.desafio.klok.developer.api_a.infrastructure.exceptions.NaoEncontradoException;
-import com.desafio.klok.developer.api_a.presentation.dto.MensagemErroDTO;
+import com.desafio.klok.developer.api_a.presentation.dto.MensagemDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class ProdutoController {
 
             return ResponseEntity.status(HttpStatus.CREATED).body(listaProdutos);
         } catch (NaoEncontradoException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemErroDTO(e.getMessage(), HttpStatus.NOT_FOUND.value()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemDTO(e.getMessage(), HttpStatus.NOT_FOUND.value()));
         }
     } 
 

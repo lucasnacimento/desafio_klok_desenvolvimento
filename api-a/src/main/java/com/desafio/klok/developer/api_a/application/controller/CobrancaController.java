@@ -4,7 +4,7 @@ import com.desafio.klok.developer.api_a.application.service.CobrancaService;
 import com.desafio.klok.developer.api_a.domain.CobrancaModel;
 import com.desafio.klok.developer.api_a.infrastructure.exceptions.NaoEncontradoException;
 import com.desafio.klok.developer.api_a.presentation.dto.CobrancaDTO;
-import com.desafio.klok.developer.api_a.presentation.dto.MensagemErroDTO;
+import com.desafio.klok.developer.api_a.presentation.dto.MensagemDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +33,7 @@ public class CobrancaController {
 
         } catch (NaoEncontradoException e) {
             codeStatus = HttpStatus.NOT_FOUND;
-            return ResponseEntity.status(codeStatus).body(new MensagemErroDTO(e.getMessage(),codeStatus.value()));
+            return ResponseEntity.status(codeStatus).body(new MensagemDTO(e.getMessage(),codeStatus.value()));
         }
 
     }

@@ -48,7 +48,7 @@ public class CobrancaModel implements Serializable{
 
     public void cadastrarCobranca(BigDecimal valor, AdesaoModel adesao){
         LocalDateTime dataAutal = LocalDateTime.now();
-        int mes = (dataAutal.getMonth().getValue() == 12) ? 1 : dataAutal.getMonth().getValue()+1;
+        int mes = (dataAutal.getMonth().getValue() == 12) ? 1 : dataAutal.getMonth().getValue();
         this.dataCobranca = LocalDateTime
                 .of(dataAutal.getYear(), mes, adesao.getDiaCobranca()
                 , dataAutal.getHour(), dataAutal.getMinute());

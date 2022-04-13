@@ -58,3 +58,4 @@ CREATE TABLE t_cobranca (
     FOREIGN KEY (id_pagamento) REFERENCES t_pagamento(id),
     FOREIGN KEY (id_adesao) REFERENCES t_adesao(id)
 );
+

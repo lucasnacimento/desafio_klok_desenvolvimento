@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import com.desafio.klok.developer.api_a.application.service.AdesaoService;
 import com.desafio.klok.developer.api_a.domain.AdesaoModel;
 import com.desafio.klok.developer.api_a.presentation.dto.AdesaoDTO;
-import com.desafio.klok.developer.api_a.presentation.dto.MensagemErroDTO;
+import com.desafio.klok.developer.api_a.presentation.dto.MensagemDTO;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class AdesaoController {
             return ResponseEntity.status(HttpStatus.OK).body(listaDTO);
         } catch (NaoEncontradoException e) {
             
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemErroDTO(e.getMessage(), HttpStatus.NOT_FOUND.value()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MensagemDTO(e.getMessage(), HttpStatus.NOT_FOUND.value()));
         }
     }
 
@@ -56,11 +56,11 @@ public class AdesaoController {
         
         } catch (IllegalArgumentException e) {
             httpCode = HttpStatus.BAD_REQUEST;
-            return ResponseEntity.status(httpCode).body(new MensagemErroDTO(e.getMessage(), httpCode.value()));
+            return ResponseEntity.status(httpCode).body(new MensagemDTO(e.getMessage(), httpCode.value()));
         
         } catch (NaoEncontradoException e) {
             httpCode = HttpStatus.NOT_FOUND;
-            return ResponseEntity.status(httpCode).body(new MensagemErroDTO(e.getMessage(), httpCode.value()));
+            return ResponseEntity.status(httpCode).body(new MensagemDTO(e.getMessage(), httpCode.value()));
         }
     }
 
