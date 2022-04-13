@@ -1,10 +1,10 @@
 
 import axios from "axios";
+import './styles.css';
 import React, { useEffect, useState } from "react";
 import PainelFormulario from '../../components/PainelFormulario/index';
 import { URL_BASE, URL_PRODUTO } from "../../config/request";
 import { Produto } from "../../types/produto";
-
 
 function Home() {
 
@@ -19,13 +19,13 @@ function Home() {
     }, []);
 
         return (
-            <>
+            <div className="page-home">
                 <div className="titulo-home">
                     <h1>Adesões de produtos</h1>
                 </div>
                 
                 <PainelFormulario lista={listaProdutos}/>
-            </>
+            </div>
         );
 
 }

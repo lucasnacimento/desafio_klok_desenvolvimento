@@ -50,7 +50,7 @@ CREATE TABLE t_pagamento (
 
 CREATE TABLE t_cobranca (
     id BIGSERIAL NOT NULL,
-    id_pagamento BIGINT NOT NULL,
+    id_pagamento BIGINT,
     id_adesao BIGINT NOT NULL,
     valor_cobranca NUMERIC NOT NULL,
     data_cobranca TIMESTAMP,

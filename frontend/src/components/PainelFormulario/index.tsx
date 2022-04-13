@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './styles.css';
 import { Produto, Adesao, Resposta, Campo } from '../../types/produto';
 import axios from "axios";
 import { URL_ADESAO, URL_BASE } from '../../config/request';
@@ -57,17 +58,17 @@ function PainelFormulario( { lista } : Props) {
     return (
         <>
         <div className="painel-formulario">
+            <h3>Produtos Disponíveis:</h3>
             <select name='lista-produtos' id="lista-produtos" value={selecionado} onChange={texto => setSelecionado(Number(texto.target.value))}>
                 {lista.map(p => (
                     <option value={p.id}>{p.nome}</option>
                 ))}
             </select>
 
-            <form>
                 <div className="campos" id="campos">
                     {
                         produto?.listaCampos.map(c => (
-                            <li>
+                            <li className='campo-item'>
                                 <label htmlFor="nome">{c.nome}</label>
                                 <input type="text" id={c.nome}/>
                             </li>
@@ -75,7 +76,6 @@ function PainelFormulario( { lista } : Props) {
 
                     }
                 </div>
-            </form>
 
             <button type="submit" onClick={(e) => {
                 preencherCampos();

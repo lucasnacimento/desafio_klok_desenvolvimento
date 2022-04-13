@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.desafio.klok.developer.api_a.domain.enums.StatusAdesao;
@@ -70,7 +69,7 @@ public class AdesaoModel implements Serializable{
     private List<RespostaModel> listaRespostas;
     
     @JoinColumn(name = "id_adesao")
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<CobrancaModel> listaCobrancas;
 
     public String getRespostaValorByCampo(String nomeCampo) {

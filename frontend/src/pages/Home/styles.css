@@ -1,0 +1,14 @@
+.page-home {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.page-home .titulo-home {
+    padding: 8rem, 8rem, 0, 0;
+    color: #fff;
+    font-size: 1.2rem;
+}

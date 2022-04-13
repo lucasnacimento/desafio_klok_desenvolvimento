@@ -39,8 +39,19 @@ public class CobrancaModel implements Serializable{
     @Column(name = "data_cobranca")
     private LocalDateTime dataCobranca;
 
+    @Column(name = "id_adesao")
+    private Long id_adesao;
+
     @JoinColumn(name = "id_pagamento")
     @OneToOne(cascade = CascadeType.ALL)
     private PagamentoModel pagamento;
 
+    public void cadastrarCobranca(BigDecimal valor, AdesaoModel adesao){
+        LocalDateTime dataAutal = LocalDateTime.now();
+        int mes = (dataAutal.getMonth().getValue() == 12) ? 1 : dataAutal.getMonth().getValue()+1;
+        this.dataCobranca = LocalDateTime
+                .of(dataAutal.getYear(), mes, adesao.getDiaCobranca()
+                , dataAutal.getHour(), dataAutal.getMinute());
+        this.valor = valor;
+    }
 }

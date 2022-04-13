@@ -1,5 +1,6 @@
 package com.desafio.klok.developer.api_a.presentation.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -13,9 +14,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CobrancaDTO {
 
-    private LocalDateTime dataCobranca;
+    private Long id;
 
     private PagamentoDTO pagamento;
 
+    private Long id_adesao;
+
+    private BigDecimal valor;
+
+    private LocalDateTime dataCobranca;
 }
 
