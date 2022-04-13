@@ -82,10 +82,11 @@ function PainelFormulario( { lista } : Props) {
                axios.post(`${URL_BASE}${URL_ADESAO}`, novaAdesao, { 'headers': { 'Content-Type': 'application/json',
                'Authorization': `Bearer ${window.localStorage.getItem("token")}` }})
                .then(response => {
-                    console.log(response);
+                    alert("Cadastro de adesao com sucesso!");
                 })
                 .catch(response => {
                     console.log(response);
+                    alert("Falha no cadastro de adesao!");
                 })
             }}>Salvar</button>
         </div>
