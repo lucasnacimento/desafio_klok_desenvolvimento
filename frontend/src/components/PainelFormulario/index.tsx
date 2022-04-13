@@ -79,8 +79,8 @@ function PainelFormulario( { lista } : Props) {
 
             <button type="submit" onClick={(e) => {
                 preencherCampos();
-               axios.post(`${URL_BASE}${URL_ADESAO}`, { 'headers': { 'Content-Type': 'application/json',
-               'Authorization': `Bearer ${window.localStorage.getItem("token")}` }, novaAdesao})
+               axios.post(`${URL_BASE}${URL_ADESAO}`, novaAdesao, { 'headers': { 'Content-Type': 'application/json',
+               'Authorization': `Bearer ${window.localStorage.getItem("token")}` }})
                .then(response => {
                     console.log(response);
                 })
